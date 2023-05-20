@@ -1,16 +1,25 @@
-public class Pair
+public class Pair implements Comparable<Pair>
 {
-    private int docId, docFrq;
-    public Pair(int docId, int docFrq) {
+    private double cosSim;
+    private int docId;
+    public Pair(double cosSim, int docId) {
         this.docId = docId;
-        this.docFrq = docFrq;
-    }
-
-    public int getDocFrq() {
-        return docFrq;
+        this.cosSim = cosSim;
     }
 
     public int getDocId() {
         return docId;
+    }
+
+    public double getCosSim() {
+        return cosSim;
+    }
+
+    @Override
+    public int compareTo(Pair pr)
+    {
+        if(cosSim > pr.cosSim) return -1;
+        else if(cosSim < pr.cosSim) return 1;
+        return 0;
     }
 }
